@@ -29,10 +29,10 @@
 </head>
 
 <script>
-
-let changeStatusArray = [];
-
-function optionSelected(selectElement) {	
+function optionSelected(selectElement) {
+	
+	//var changeStatusArray = 
+	
 	// "nowStatusDate${counter}"
 	var nowStatusDateId = selectElement.parentElement.previousElementSibling.id;
 	var nowStatusDateElement = document.getElementById(nowStatusDateId);
@@ -45,52 +45,13 @@ function optionSelected(selectElement) {
     var nowStatusElement = document.getElementById(nowStatusId);
     var nowStatusText = nowStatusElement.textContent.trim();
 
-    if (selectedValue !== nowStatusText) { // 수정을 위해 선택된 상태의 값과 현상태의 값이 다른 경우
-        dot.style.color = "red"; // 동그라미를 빨갛게 표시한다.
+    if (selectedValue !== nowStatusText) {
+        dot.style.color = "red";
         
-        // 배열에서 해당 날짜 데이터를 찾아 업데이트하거나 추가한다.
-        let index = changeStatusArray.findIndex(item => item.date === nowStatusDateText);
-        if (index !== -1) {
-            // 이미 존재하는 경우 상태 값을 업데이트한다.
-            changeStatusArray[index].status = selectedValue;
-        } else {
-            // 존재하지 않는 경우 배열에 추가한다.
-            changeStatusArray.push({ date: nowStatusDateText, status: selectedValue });
-        }
-    } else {
-        dot.style.color = "";
-        
-        // 선택이 다시 현재 상태 값과 같은 경우 배열에서 해당 행의 데이터를 제거한다.
-        changeStatusArray = changeStatusArray.filter(item => item.date !== nowStatusDateText);
     }
-    
-}
-
-function modifyRequestClick() {
-   /*  // 변경된 날짜 데이터와 상태 값을 확인합니다.
-    console.log(changeStatusArray);
-    
-    // 서버로 전송할 데이터를 준비합니다.
-    var requestData = {
-        employeeCode: "${modifyCode}", // 사원코드 추가
-        statusArray: changeStatusArray // 변경된 근태 상태 배열
-    };
-    
-    // AJAX를 사용하여 서버에 데이터를 전송합니다.
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "workUpdate.workDo", true); // 서버의 URL 주소를 입력합니다.
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                console.log("데이터 전송 성공!");
-                // 서버로부터 응답을 받은 후 수행할 작업을 여기에 작성합니다.
-            } else {
-                console.error("데이터 전송 실패...");
-            }
-        }
-    };
-    xhr.send(JSON.stringify(requestData)); */
+    else {
+        dot.style.color = "";
+    }
 }
 </script>
 
@@ -172,7 +133,7 @@ function modifyRequestClick() {
 														id="changeStatus${counter}"
 														onchange="optionSelected(this)">
 															<optgroup label="상태 수정">
-
+																
 																<option value=""></option>
 																<option value="출근">출근</option>
 																<option value="출장">출장</option>
@@ -194,7 +155,7 @@ function modifyRequestClick() {
 							<!-- 근태 상태 정보창으로 넘어가기 -->
 							<a
 								class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-								onclick="modifyRequestClick()">수정
+								href="workDetailSearchView.workDo?employeeCode=${modifyCode}">수정
 								완료</a>
 
 							<!-- 근태 상태 정보창으로 넘어가기 -->

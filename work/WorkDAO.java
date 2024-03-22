@@ -20,15 +20,6 @@ public class WorkDAO {
 	private String searchDetailAttendanceSQL = "select * from totalattendance where employeeCode = ?";
 	// 해당 사원 날짜별 데이터 가져오기
 	private String totalDateofAttendanceSQL = "select date, startTimeForWork, endTimeForWork, status from attendance where employeeCode = ?";
-	// 해당 사원의 근태 상태 수정하기
-	private String updateStatusSQL = "update attendance set status=? where employeeCode=? and date=?";
-	
-	
-	// 근태 상태 수정하기
-	public void updateStatus() {
-		
-	}
-	
 	
 	// 전사원 근태 내역
 	public List<WorkDTO> getAllAttendance(){
@@ -117,9 +108,6 @@ public class WorkDAO {
 			
 			return workAllDateInfo;// 해당 사원의 날짜별 근태정보를 담은 리스트를 반환합니다.
 		}
-		
-		
-		
 	
 	/*
 	 * // 해당 사원의 상세 근태 내역 public List<WorkDTO> getDetailAttendance(){ List<WorkDTO>
