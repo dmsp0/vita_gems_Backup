@@ -177,6 +177,7 @@
                         <div class="topbar-divider d-none d-sm-block"></div>
 
 			<% String userName = (String)session.getAttribute("userName"); %>
+			<% String userCode = (String)session.getAttribute("user"); %>
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -188,7 +189,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="myPage.employeeDo?employeeCode=<%=userCode%>">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>

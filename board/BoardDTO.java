@@ -11,13 +11,59 @@ public class BoardDTO {
 	 * publishdate DATETIME NOT NULL, 
 	 * img LONGBLOB,
 	 */
-	private int noticeid;
-	private String title;
-	private String content;
-	private String category;
-	private String authorid;
-	private String publishdate;
-	//private         img;
+	
+	private int noticeid; // 게시글 번호
+	private String title; // 게시글 제목
+	private String content; // 게시글 내용
+	private String category; // 게시 카테고리
+	private String authorid; // 작성자 (DB : 사원코드, FRONT : '관리자')
+	private String publishdate; // 작성일시 '0000-00-00 00:00:00' 형태
+	private String img; // 이미지
+	
+	
+	public int getNoticeid() {
+		return noticeid;
+	}
+	public void setNoticeid(int noticeid) {
+		this.noticeid = noticeid;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getAuthorid() {
+		return authorid;
+	}
+	public void setAuthorid(String authorid) {
+		this.authorid = authorid;
+	}
+	public String getPublishdate() {
+		return publishdate;
+	}
+	public void setPublishdate(String publishdate) {
+		this.publishdate = publishdate;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+
 	
 	
 

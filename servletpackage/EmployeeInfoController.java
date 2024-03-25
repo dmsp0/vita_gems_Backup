@@ -48,9 +48,22 @@ public class EmployeeInfoController extends HttpServlet {
     				EmployeeDAO eDAO = new EmployeeDAO();
     				request.setAttribute("eDTOInfo",eDAO.selectEmployee(employeeCode));
     				RequestDispatcher dispatcher = request.getRequestDispatcher("employeeModifyView.jsp");
+					dispatcher.forward(request, response);	
+    			}
+    			
+    			else if(PATH.equals("/myPageModifyView.employeeDo")) { // 사원정보수정페이지
+    				System.out.println("사원정보수정");
+    				String employeeCode = request.getParameter("employeeCode");
+    				System.out.println(employeeCode);
+    				EmployeeDAO eDAO = new EmployeeDAO();
+    				request.setAttribute("eDTOInfo",eDAO.selectEmployee(employeeCode));
+    				RequestDispatcher dispatcher = request.getRequestDispatcher("myPageModifyView.jsp");
 					dispatcher.forward(request, response);
 					
-    			}else if(PATH.equals("/employeeRegisterView.employeeDo")){//사원등록
+					
+    			}
+    			
+    			else if(PATH.equals("/employeeRegisterView.employeeDo")){//사원등록
     				//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     				EmployeeDAO eDAO = new EmployeeDAO();
     				String employeeName = request.getParameter("employeeName");
@@ -66,7 +79,9 @@ public class EmployeeInfoController extends HttpServlet {
 						//employeeSearchView.employeeDo로 dispatch하기
 						RequestDispatcher dispatcher = request.getRequestDispatcher("employeeSearchView.employeeDo");
 						dispatcher.forward(request, response);
-    			}else if(PATH.equals("/employeeModifyComplete.employeeDo")) {//수정사항 업데이트
+    			}
+    			
+    			else if(PATH.equals("/employeeModifyComplete.employeeDo")) {//수정사항 업데이트
     				EmployeeDAO eDAO = new EmployeeDAO();
     				String employeeCode = request.getParameter("employeeCode");
     				String employeeName = request.getParameter("employeeName");
@@ -81,7 +96,9 @@ public class EmployeeInfoController extends HttpServlet {
     	            eDAO.updateEmployee(employeeCode, employeeName, gender, phoneNum, address, department, employeeRank, joinDate, authority);
     	            RequestDispatcher dispatcher = request.getRequestDispatcher("employeeDetailView.employeeDo?employeeCode="+employeeCode);
 					dispatcher.forward(request, response);
-    			}else if(PATH.equals("/employeeDetailView.employeeDo")) {
+    			}
+    			
+    			else if(PATH.equals("/employeeDetailView.employeeDo")) {
     				String employeeCode = request.getParameter("employeeCode");
     				System.out.println(employeeCode);
     				EmployeeDAO eDAO = new EmployeeDAO();
@@ -89,6 +106,16 @@ public class EmployeeInfoController extends HttpServlet {
     				RequestDispatcher dispatcher = request.getRequestDispatcher("employeeDetailView.jsp");
 					dispatcher.forward(request, response);
     			}
+    			
+    			else if(PATH.equals("/myPage.employeeDo")) {
+    				String employeeCode = request.getParameter("employeeCode");
+    				System.out.println(employeeCode);
+    				EmployeeDAO eDAO = new EmployeeDAO();
+    				request.setAttribute("eDTOInfo",eDAO.selectEmployee(employeeCode));
+    				RequestDispatcher dispatcher = request.getRequestDispatcher("myPageView.jsp");
+					dispatcher.forward(request, response);
+    			}
+    			
     	
     }
 	
