@@ -1,31 +1,21 @@
 package board;
 
+import java.sql.Date;
+
 public class BoardDTO {
-	/*
-	 * TABLE announcement ( 
-	 * noticeid INT NOT NULL AUTO_INCREMENT,
-	 *  title VARCHAR(255)NOT NULL, 
-	 * content TEXT NOT NULL, 
-	 * category ENUM('업무', '인사','이벤트'),
-	 * authorid VARCHAR(20) NOT NULL, 
-	 * publishdate DATETIME NOT NULL, 
-	 * img LONGBLOB,
-	 */
 	
-	private int noticeid; // 게시글 번호
-	private String title; // 게시글 제목
-	private String content; // 게시글 내용
-	private String category; // 게시 카테고리
-	private String authorid; // 작성자 (DB : 사원코드, FRONT : '관리자')
-	private String publishdate; // 작성일시 '0000-00-00 00:00:00' 형태
-	private String img; // 이미지
-	
-	
-	public int getNoticeid() {
-		return noticeid;
+	private int noticeId;
+	private String title;
+	private String content;
+	private String category;
+	private String authorId;
+	private Date publishdate;
+	private String img;
+	public int getNoticeId() {
+		return noticeId;
 	}
-	public void setNoticeid(int noticeid) {
-		this.noticeid = noticeid;
+	public void setNoticeId(int noticeId) {
+		this.noticeId = noticeId;
 	}
 	public String getTitle() {
 		return title;
@@ -45,16 +35,16 @@ public class BoardDTO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getAuthorid() {
-		return authorid;
+	public String getAuthorId() {
+		return authorId;
 	}
-	public void setAuthorid(String authorid) {
-		this.authorid = authorid;
+	public void setAuthorId(String authorId) {
+		this.authorId = authorId;
 	}
-	public String getPublishdate() {
+	public Date getPublishdate() {
 		return publishdate;
 	}
-	public void setPublishdate(String publishdate) {
+	public void setPublishdate(Date publishdate) {
 		this.publishdate = publishdate;
 	}
 	public String getImg() {
@@ -63,8 +53,10 @@ public class BoardDTO {
 	public void setImg(String img) {
 		this.img = img;
 	}
-
 	
+	
+	
+}
 	
 
 /*사진을 담기 위해 LONGBLOB 컬럼을 사용하려는 것이 맞나요? 그렇다면 해당 사진을 바이너리 형식으로 변환하여 데이터베이스에 저장하는 것이 일반적인 방법입니다. Java에서는 이미지를 바이너리 데이터로 변환하여 데이터베이스에 저장할 수 있습니다.
@@ -99,4 +91,3 @@ public class ImageToDatabase {
 
 데이터베이스에서 이미지를 검색하려면 이진 데이터를 다시 이미지로 변환해야 합니다. 이 과정은 이미지 데이터를 읽어서 화면에 표시하는 방식으로 이루어집니다.*/
 	
-}

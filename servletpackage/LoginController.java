@@ -16,7 +16,7 @@ import login.LoginDTO;
 
 
 
-@WebServlet("/loginComplete")
+@WebServlet(urlPatterns = {"/loginComplete", "/logout"})
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,6 +27,8 @@ public class LoginController extends HttpServlet {
     
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");//이거 해야 한글처리 제대로함
+		
 		 String id = request.getParameter("id");
 	     String password = request.getParameter("pw");
 	     
@@ -47,10 +49,21 @@ public class LoginController extends HttpServlet {
 	            dispatcher.forward(request, response);
 	        } else {
 	        	System.out.println("아이디혹은 비밀번호가 틀립니다.");
-	        	response.sendRedirect("index.jsp");
+	        	response.sendRedirect("index.jsp?error=1");
 	        }
 	        
 	}
+
+		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+			HttpSession session = request.getSession(false);
+			if(session !=null) {
+				System.out.println("세션제거");
+				session.invalidate();
+			}
+			response.sendRedirect("index.jsp");
+		}
+	
+	
 	
 	private boolean validateUser(String id, String password) {
 		// 여기에 사용자 검증 로직 구현하기
